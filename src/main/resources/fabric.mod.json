@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "virtualore",
+  "version": "${version}",
+  "name": "VirtualOre",
+  "description": "Adds a mechanic from factorio with ores having a set yield able to be mined multiple times before disappearing.",
+  "authors": [
+    "ProjectET"
+  ],
+  "contributors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/virtualore/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "github.io.projectet.virtualore.VirtualOre"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [
+    "virtualore.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*"
+  }
+}
