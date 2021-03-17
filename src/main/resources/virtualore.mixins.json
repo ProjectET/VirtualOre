@@ -1,6 +1,6 @@
 {
   "required": false,
-  "package": "github.io.projectet.virtualore.mixin",
+  "package": "io.github.projectet.virtualore.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [],
   "client": [],

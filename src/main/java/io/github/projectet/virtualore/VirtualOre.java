@@ -1,4 +1,4 @@
-package github.io.projectet.virtualore;
+package io.github.projectet.virtualore;
 
 import net.fabricmc.api.ModInitializer;
 

@@ -14,7 +14,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "github.io.projectet.virtualore.VirtualOre"
+      "io.github.projectet.virtualore.VirtualOre"
     ],
     "client": [],
     "server": []
