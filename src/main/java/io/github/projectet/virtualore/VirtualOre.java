@@ -11,7 +11,7 @@ public class VirtualOre implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
 
     public static final String MOD_ID = "virtualore";
-    public static final String MOD_NAME = "VirtualOre";
+    public static final String MOD_NAME = "Virtual Ore";
 
     @Override
     public void onInitialize() {
