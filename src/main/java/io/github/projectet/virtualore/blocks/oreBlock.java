@@ -1,10 +1,12 @@
 package io.github.projectet.virtualore.blocks;
 
+import io.github.projectet.virtualore.blocks.entity.oreBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.Nullable;
+import io.github.projectet.virtualore.VirtualOre;
+
 
 public class oreBlock extends Block implements BlockEntityProvider {
 
@@ -12,9 +14,9 @@ public class oreBlock extends Block implements BlockEntityProvider {
         super(settings);
     }
 
-    @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockView world) {
-        return null;
+        return new oreBlockEntity(VirtualOre.ORE_BLOCK_ENTITY);
     }
+
 }
