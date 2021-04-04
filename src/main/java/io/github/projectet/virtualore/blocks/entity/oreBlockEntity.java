@@ -6,10 +6,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.CompoundTag;
 /*
-TODO
-Remember to use the PlayerBlockBreakEvents from net.fabricmc.fabric.api.event.player;
-Consider using ActionResult in conjunction with the event.
-Consider using BlockStates for storing the int of the yield or consider using Cardinal components.
+TODO: Remember to use the PlayerBlockBreakEvents from net.fabricmc.fabric.api.event.player;
+TODO: Consider using ActionResult in conjunction with the event.
+TODO: Consider using BlockStates for storing the int of the yield or consider using Cardinal components.
 */
 
 public class oreBlockEntity extends BlockEntity implements BlockEntityClientSerializable {
