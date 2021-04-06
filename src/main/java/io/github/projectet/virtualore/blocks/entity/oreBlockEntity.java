@@ -21,6 +21,7 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
         super(type);
     }
 
+
     @Override
     public void fromClientTag(CompoundTag tag) {
         assert world != null;
@@ -47,6 +48,7 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
     @Override
     public void fromTag(BlockState state, CompoundTag tag) {
         super.fromTag(state, tag);
+        tag.getInt("yield");
     }
 
     @Override

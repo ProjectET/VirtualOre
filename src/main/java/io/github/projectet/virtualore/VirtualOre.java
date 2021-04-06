@@ -1,9 +1,16 @@
 package io.github.projectet.virtualore;
 
 import io.github.projectet.virtualore.blocks.entity.oreBlockEntity;
+import io.github.projectet.virtualore.blocks.oreBlock;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.Level;
@@ -21,12 +28,15 @@ public class VirtualOre implements ModInitializer {
         return new Identifier(MOD_ID, path);
     }
 
-    public static final BlockEntityType<oreBlockEntity> ORE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, id("oreBlockEntity"), BlockEntityType.Builder.create(oreBlockEntity::new, oreBlock));
+    public static final BlockEntityType<oreBlockEntity> ORE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, id("oreBlockEntity"), BlockEntityType.Builder.create(oreBlockEntity::new, TEST_BLOCK).build(null));
+
+    public static final Block TEST_BLOCK = new oreBlock(FabricBlockSettings.of(Material.STONE).hardness(2).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 
     @Override
     public void onInitialize() {
         log(Level.INFO, "Initializing");
         //TODO: Initializer
+
     }
 
     public static void log(Level level, String message){
