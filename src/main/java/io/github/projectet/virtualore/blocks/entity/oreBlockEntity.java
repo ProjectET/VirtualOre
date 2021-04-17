@@ -43,10 +43,7 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
 
     @Override
     public CompoundTag toClientTag(CompoundTag tag) {
-        if(blockState != null) {
-            tag.putInt("yield", yield);
-        }
-        return tag;
+        return this.toTag(tag);
     }
 
     public int decYield() {
