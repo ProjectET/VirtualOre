@@ -7,17 +7,16 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.CompoundTag;
 
+import java.util.Random;
+
 /*
 TODO: Remember to use the PlayerBlockBreakEvents from net.fabricmc.fabric.api.event.player;
 TODO: Consider using ActionResult in conjunction with the event.
-TODO: Consider using BlockStates for storing the int of the yield or consider using Cardinal components.
 */
 
 public class oreBlockEntity extends BlockEntity implements BlockEntityClientSerializable {
 
     private int yield;
-    private BlockState blockState;
-
 
     public oreBlockEntity(BlockEntityType<?> type) {
         super(type);
@@ -25,6 +24,8 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
 
     public oreBlockEntity() {
         this(VirtualOre.ORE_BLOCK_ENTITY);
+        Random random = new Random();
+        yield = random.nextInt(48) + 2;
     }
 
     @Override
@@ -33,25 +34,19 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
         fromTag(world.getBlockState(pos), tag);
     }
 
-    public BlockState getBlockState() {
-        return blockState;
-    }
-
     public int getYield() {
         return yield;
     }
+
 
     @Override
     public CompoundTag toClientTag(CompoundTag tag) {
         return this.toTag(tag);
     }
 
-    public int decYield() {
+    public void decYield() {
         if (getYield() >= 2) {
-            return yield--;
-        }
-        else {
-            return yield;
+            yield--;
         }
     }
 
@@ -63,10 +58,8 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
 
     @Override
     public CompoundTag toTag(CompoundTag tag) {
-        if(blockState != null) {
-            tag.putInt("yield", yield);
-        }
         super.toTag(tag);
+        tag.putInt("yield", yield);
         return tag;
     }
 
