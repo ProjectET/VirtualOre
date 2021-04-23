@@ -2,7 +2,8 @@
   "required": false,
   "package": "io.github.projectet.virtualore.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [],
+  "mixins": [
+  ],
   "client": [],
   "server": [],
   "injectors": {

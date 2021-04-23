@@ -1,6 +1,9 @@
 package io.github.projectet.virtualore.blocks;
 
 import io.github.projectet.virtualore.blocks.entity.oreBlockEntity;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
@@ -9,12 +12,14 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
 public class oreBlock extends Block implements BlockEntityProvider {
 
@@ -28,25 +33,12 @@ public class oreBlock extends Block implements BlockEntityProvider {
         if(!world.isClient) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof oreBlockEntity) {
-                System.out.println("Before " + ((oreBlockEntity) blockEntity).getYield());
+                player.sendMessage(new LiteralText("Before: " + ((oreBlockEntity) blockEntity).getYield()), false);
                 ((oreBlockEntity) blockEntity).decYield();
-                System.out.println("After " + ((oreBlockEntity) blockEntity).getYield());
+                player.sendMessage(new LiteralText("After: " + ((oreBlockEntity) blockEntity).getYield()), false);
             }
         }
         return ActionResult.SUCCESS;
-    }
-
-    @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        super.onBreak(world, pos, state, player);
-        if(!world.isClient) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof oreBlockEntity) {
-                if(((oreBlockEntity) blockEntity).getYield() <= 1) {
-                    System.out.println("I'm Broke");
-                }
-            }
-        }
     }
 
     public static final BooleanProperty YIELDS = BooleanProperty.of("yields");

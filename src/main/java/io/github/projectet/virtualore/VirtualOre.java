@@ -2,16 +2,20 @@ package io.github.projectet.virtualore;
 
 import io.github.projectet.virtualore.blocks.entity.oreBlockEntity;
 import io.github.projectet.virtualore.blocks.oreBlock;
+import io.github.projectet.virtualore.util.BlockEvents;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.Level;
@@ -37,6 +41,8 @@ public class VirtualOre implements ModInitializer {
         log(Level.INFO, "Initializing");
         Registry.register(Registry.BLOCK, id("test_block"), TEST_BLOCK);
         Registry.register(Registry.ITEM, id("test_block"), new BlockItem(TEST_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        BlockEvents.Initialise();
+
     }
 
     public static void log(Level level, String message){
