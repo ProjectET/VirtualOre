@@ -45,7 +45,7 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
     }
 
     public void decYield() {
-        if (getYield() >= 2) {
+        if (yield >= 2) {
             yield--;
         }
     }

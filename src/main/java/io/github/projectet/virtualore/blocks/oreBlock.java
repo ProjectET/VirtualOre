@@ -29,9 +29,7 @@ public class oreBlock extends Block implements BlockEntityProvider {
         if(!world.isClient) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof oreBlockEntity) {
-                player.sendMessage(new LiteralText("Before: " + ((oreBlockEntity) blockEntity).getYield()), false);
-                ((oreBlockEntity) blockEntity).decYield();
-                player.sendMessage(new LiteralText("After: " + ((oreBlockEntity) blockEntity).getYield()), false);
+                player.sendMessage(new LiteralText("Yield: " + ((oreBlockEntity) blockEntity).getYield()), false);
             }
         }
         return ActionResult.SUCCESS;
