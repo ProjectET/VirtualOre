@@ -3,9 +3,7 @@ package io.github.projectet.virtualore.util;
 import io.github.projectet.virtualore.blocks.entity.oreBlockEntity;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.LiteralText;
 
 public class BlockEvents {
@@ -32,7 +30,7 @@ public class BlockEvents {
                     player.getMainHandStack().damage(1, player, PlayerEntity::tick);
                 }
                 ((oreBlockEntity) blockEntity).decYield();
-                player.sendMessage(new LiteralText("Yield: " + ((oreBlockEntity) blockEntity).getYield() + " Durability: " + player.getMainHandStack().getDamage()), false);
+                player.sendMessage(new LiteralText("Yield: " + ((oreBlockEntity) blockEntity).getYield() + " Durability: " + (player.getMainHandStack().getMaxDamage() - player.getMainHandStack().getDamage())), true);
             }
         }));
     }

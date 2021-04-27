@@ -9,10 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 
 import java.util.Random;
 
-/*
-TODO: Remember to use the PlayerBlockBreakEvents from net.fabricmc.fabric.api.event.player;
-TODO: Consider using ActionResult in conjunction with the event.
-*/
+
 
 public class oreBlockEntity extends BlockEntity implements BlockEntityClientSerializable {
 
