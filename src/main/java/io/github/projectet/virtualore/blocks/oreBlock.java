@@ -21,7 +21,6 @@ public class oreBlock extends Block implements BlockEntityProvider {
 
     public oreBlock(Settings settings) {
         super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(YIELDS, true));
     }
 
     @Override
@@ -35,8 +34,6 @@ public class oreBlock extends Block implements BlockEntityProvider {
         return ActionResult.SUCCESS;
     }
 
-    public static final BooleanProperty YIELDS = BooleanProperty.of("yields");
-
     @Override
     public BlockEntity createBlockEntity(BlockView world) {
         return new oreBlockEntity();
@@ -45,10 +42,5 @@ public class oreBlock extends Block implements BlockEntityProvider {
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(YIELDS);
     }
 }
