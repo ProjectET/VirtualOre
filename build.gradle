@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.7.11'
+	id 'fabric-loom' version '0.8-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -13,6 +13,12 @@ group = project.maven_group
 minecraft {
 }
 
+repositories {
+	maven {
+		url = uri("https://storage.googleapis.com/devan-maven/")
+	}
+}
+
 dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -20,6 +26,8 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	modImplementation("net.devtech:arrp:0.4.4")
 }
 
 processResources {

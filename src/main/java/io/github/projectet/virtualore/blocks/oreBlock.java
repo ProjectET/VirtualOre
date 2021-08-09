@@ -1,5 +1,6 @@
 package io.github.projectet.virtualore.blocks;
 
+import io.github.projectet.virtualore.VirtualOre;
 import io.github.projectet.virtualore.blocks.entity.oreBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
@@ -14,6 +15,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class oreBlock extends Block implements BlockEntityProvider {
 
@@ -33,12 +35,13 @@ public class oreBlock extends Block implements BlockEntityProvider {
     }
 
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new oreBlockEntity();
-    }
-
-    @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new oreBlockEntity(pos, state);
     }
 }

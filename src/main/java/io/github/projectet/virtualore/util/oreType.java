@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 
 public interface oreType {
     boolean enabled();
+    boolean dropsMineral();
     Item getMineral();
     oreBlock getBlock();
     String getPath();

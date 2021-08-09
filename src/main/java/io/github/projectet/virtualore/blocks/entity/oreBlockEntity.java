@@ -4,31 +4,24 @@ import io.github.projectet.virtualore.VirtualOre;
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Random;
-
-
 
 public class oreBlockEntity extends BlockEntity implements BlockEntityClientSerializable {
 
     private int yield;
 
-    public oreBlockEntity(BlockEntityType<?> type) {
-        super(type);
-    }
-
-    public oreBlockEntity() {
-        this(VirtualOre.ORE_BLOCK_ENTITY);
+    public oreBlockEntity(BlockPos pos, BlockState state) {
+        super(VirtualOre.ORE_BLOCK_ENTITY, pos, state);
         Random random = new Random();
         yield = random.nextInt(48) + 2;
     }
 
     @Override
-    public void fromClientTag(CompoundTag tag) {
-        assert world != null;
-        fromTag(world.getBlockState(pos), tag);
+    public void fromClientTag(NbtCompound tag) {
+        readNbt(tag);
     }
 
     public int getYield() {
@@ -37,8 +30,8 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
 
 
     @Override
-    public CompoundTag toClientTag(CompoundTag tag) {
-        return this.toTag(tag);
+    public NbtCompound toClientTag(NbtCompound tag) {
+        return this.writeNbt(tag);
     }
 
     public void decYield() {
@@ -48,14 +41,14 @@ public class oreBlockEntity extends BlockEntity implements BlockEntityClientSeri
     }
 
     @Override
-    public void fromTag(BlockState state, CompoundTag tag) {
-        super.fromTag(state, tag);
+    public void readNbt(NbtCompound tag) {
+        super.readNbt(tag);
         yield = tag.getInt("yield");
     }
 
     @Override
-    public CompoundTag toTag(CompoundTag tag) {
-        super.toTag(tag);
+    public NbtCompound writeNbt(NbtCompound tag) {
+        super.writeNbt(tag);
         tag.putInt("yield", yield);
         return tag;
     }

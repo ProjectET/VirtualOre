@@ -7,6 +7,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -34,7 +35,7 @@ public class VirtualOre implements ModInitializer {
     }
 
     public static final Block TEST_BLOCK = new oreBlock(FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES));
-    public static final BlockEntityType<oreBlockEntity> ORE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, id("ore_block_entity"), BlockEntityType.Builder.create(oreBlockEntity::new, TEST_BLOCK).build(null));
+    public static final BlockEntityType<oreBlockEntity> ORE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, id("ore_block_entity"), FabricBlockEntityTypeBuilder.create(oreBlockEntity::new, TEST_BLOCK).build(null));
 
     @Override
     public void onInitialize() {
